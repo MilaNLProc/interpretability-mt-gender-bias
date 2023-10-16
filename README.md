@@ -29,3 +29,37 @@ This repository contains the following assets described in the paper:
 - human-refined GPT-3.5 translation of WinoMT professions
 - human-translated seed demonstrations for few-shot learning
 - integrated gradient scores (WIP)
+
+## Replicating Our Results
+
+Many scripts require to specify a prompt template. See `./src/utils.py` the available options.
+
+### Translating Europarl 
+
+```bash
+```
+
+### Evaluating Europarl Translations
+
+```bash
+./bash/evaluate_all.sh europarl-test en es
+./bash/evaluate_all.sh europarl-test en de
+```
+
+### Translating WinoMT
+
+```bash
+sbatch ./bash/translate_dataset.sh winomt es 0
+```
+
+### Evaluating WinoMT Translations
+
+TBD
+
+### Generating Integrated Gradients
+
+TBD
+
+### Processing Integrated Gradients
+
+TBD
