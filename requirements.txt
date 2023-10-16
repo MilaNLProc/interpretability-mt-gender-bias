@@ -1,0 +1,15 @@
+transformers>4.34.0
+datasets>=2.14.5
+sacremoses>=0.0.53
+sentencepiece>=0.1.99
+unbabel-comet>=2.1.0
+accelerate>=0.23.0
+evaluate>=0.4.0
+bitsandbytes>=0.41.1
+inseq==0.4.0
+fire>=0.5.0
+bert_score>=0.3.13
+codecarbon
+python-dotenv
+wandb
+git+https://github.com/MilaNLProc/simple-generation.git
