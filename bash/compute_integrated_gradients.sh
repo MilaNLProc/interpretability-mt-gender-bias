@@ -51,7 +51,6 @@ for model in ${MODELS[@]}; do
         --max_new_tokens="1024" \
         --num_beams="4" \
         --early_stopping="true" \
-        --dry_run \
         --quantization="8b"
 
 done
