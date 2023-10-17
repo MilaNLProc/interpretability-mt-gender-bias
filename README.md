@@ -37,10 +37,10 @@ Many scripts require to specify a prompt template. See `./src/utils.py` the avai
 ### Translating Europarl and WinoMT
 
 ```bash
-sbatch ./bash/translate_dataset.sh europarl-test es 0
-sbatch ./bash/translate_dataset.sh europarl-test de 0
-sbatch ./bash/translate_dataset.sh winomt es 0
-sbatch ./bash/translate_dataset.sh winomt de 0
+./bash/translate_dataset.sh europarl-test es 0
+./bash/translate_dataset.sh europarl-test de 0
+./bash/translate_dataset.sh winomt es 0
+./bash/translate_dataset.sh winomt de 0
 ```
 
 ### Evaluating Europarl Translations
@@ -56,8 +56,6 @@ We use WinoMT's original code to evaluate delta_G, delta_S, and accuracy. We wil
 
 ### Generating Integrated Gradients
 
-TBD
-
-### Processing Integrated Gradients
-
-TBD
+```bash
+./bash/compute_integrated_gradients.sh winomt es
+```

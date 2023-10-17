@@ -42,7 +42,7 @@ MODELS=( \
 
 echo "Running MarianMT baseline..."
 
-python src/translate.py \
+python src/run.py \
     --model_name_or_path="Helsinki-NLP/opus-mt-en-${TGT_LANG}" \
     --dataset_name=${DATASET_NAME} \
     --src_lang="en" --tgt_lang="${TGT_LANG}" \
@@ -56,7 +56,7 @@ for model in ${MODELS[@]}; do
     IFS=' '
     echo "Translating with ${model_toks[1]}..."
 
-    python src/translate.py \
+    python src/run.py \
         --model_name_or_path=${model} \
         --dataset_name=${DATASET_NAME} \
         --src_lang="en" --tgt_lang="${TGT_LANG}" \

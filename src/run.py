@@ -5,13 +5,11 @@ import pdb
 import pickle
 from dataclasses import asdict, dataclass, field
 
-import pandas as pd
 from dotenv import load_dotenv
 from simple_generation import SimpleGenerator
 from tqdm import tqdm
 from transformers import HfArgumentParser
 
-from datasets import Dataset
 from utils import ISO_TO_LANG, build_prompt, read_data
 
 logger = logging.getLogger(__name__)
@@ -91,8 +89,12 @@ def main():
     args, generation_args = parser.parse_args_into_dataclasses()
     logger.info(args)
 
+    if args.do_translation == args.do_feature_attribution:
+        raise ValueError("You can either do translation or feature attribution.")
+
     model_base_name = os.path.basename(args.model_name_or_path)
 
+    few_shot_name = ""
     if args.file_few_shot is not None:
         few_shot_name = args.file_few_shot.split(".")[0]
         out_filename = f"{model_base_name}_{args.dataset_name}_{args.src_lang}_{args.tgt_lang}_{few_shot_name}.json"
@@ -159,6 +161,8 @@ def main():
                     for s, t in zip(otexts, translations):
                         fp.write(f"{s} ||| {t}\n")
 
+        print("Ending translation...")
+
     if args.do_feature_attribution:
         import inseq
         import numpy as np
@@ -183,6 +187,7 @@ def main():
         print("Splitting texts into n batches", n_batches)
         batches = np.array_split(texts, n_batches)
 
+        print(f"Creating {args.output_dir} if it doesn't exist.")
         os.makedirs(args.output_dir, exist_ok=True)
 
         for idx, batch in tqdm(enumerate(batches), desc="Batch", total=len(batches)):
@@ -209,6 +214,7 @@ def main():
                 show_progress=True,
             )
 
+            # Saving the generations produced in the batch, one per line
             with open(
                 f"{args.output_dir}/{args.src_lang}-{args.tgt_lang}_gen_texts_{idx}_{few_shot_name}.txt",
                 "w",

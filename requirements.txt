@@ -9,7 +9,9 @@ bitsandbytes>=0.41.1
 inseq==0.4.0
 fire>=0.5.0
 bert_score>=0.3.13
+inseq==0.4.0
 codecarbon
 python-dotenv
 wandb
 git+https://github.com/MilaNLProc/simple-generation.git
+git+https://github.com/inseq-team/inseq.git
