@@ -48,7 +48,7 @@ python src/translate.py \
     --src_lang="en" --tgt_lang="${TGT_LANG}" \
     --output_dir="./translations/${DATASET_NAME}/opus-mt-en-${TGT_LANG}" \
     --num_beams=4 \
-    --batch_size=512
+    --batch_size=128
 
 for model in ${MODELS[@]}; do
     IFS='/'

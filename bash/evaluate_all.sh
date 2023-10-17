@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64000MB
-#SBATCH --time=48:00:00
+#SBATCH --time=24:00:00
 #SBATCH --partition=gpu
 #SBATCH --output=./logs/slurm-%A.out
 
@@ -45,7 +45,7 @@ for model in ${MODELS[@]}; do
 
     echo "Evaluating ${model}..."
 
-    python evaluate_metrics.py \
+    python src/evaluate_metrics.py \
         --input_dir=${INPUT_DIR} \
         --model_name_or_path=${model} \
         --dataset_name=${DATASET_NAME} \

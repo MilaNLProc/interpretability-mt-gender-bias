@@ -2,7 +2,7 @@ transformers>4.34.0
 datasets>=2.14.5
 sacremoses>=0.0.53
 sentencepiece>=0.1.99
-unbabel-comet>=2.1.0
+unbabel-comet>=2.1.1
 accelerate>=0.23.0
 evaluate>=0.4.0
 bitsandbytes>=0.41.1

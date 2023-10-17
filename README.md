@@ -34,27 +34,25 @@ This repository contains the following assets described in the paper:
 
 Many scripts require to specify a prompt template. See `./src/utils.py` the available options.
 
-### Translating Europarl 
+### Translating Europarl and WinoMT
 
 ```bash
+sbatch ./bash/translate_dataset.sh europarl-test es 0
+sbatch ./bash/translate_dataset.sh europarl-test de 0
+sbatch ./bash/translate_dataset.sh winomt es 0
+sbatch ./bash/translate_dataset.sh winomt de 0
 ```
 
 ### Evaluating Europarl Translations
 
 ```bash
-./bash/evaluate_all.sh europarl-test en es
-./bash/evaluate_all.sh europarl-test en de
-```
-
-### Translating WinoMT
-
-```bash
-sbatch ./bash/translate_dataset.sh winomt es 0
+./bash/evaluate_all.sh europarl-test ./translations/europarl-test/ en es
+./bash/evaluate_all.sh europarl-test ./translations/europarl-test/ en de
 ```
 
 ### Evaluating WinoMT Translations
 
-TBD
+We use WinoMT's original code to evaluate delta_G, delta_S, and accuracy. We will provide a detail guide on that. Meanwhile, you can refer to the [official repository](https://github.com/gabrielStanovsky/mt_gender).
 
 ### Generating Integrated Gradients
 

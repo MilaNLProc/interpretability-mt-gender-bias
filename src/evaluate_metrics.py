@@ -5,12 +5,10 @@ from dataclasses import asdict, dataclass, field
 
 import evaluate
 import numpy as np
+from codecarbon import track_emissions
 from comet import download_model, load_from_checkpoint
-from dotenv import load_dotenv
 from tqdm import tqdm
-from transformers import (
-    HfArgumentParser,
-)
+from transformers import HfArgumentParser
 
 from utils import read_data
 
@@ -76,9 +74,10 @@ def evaluate_metrics(sources, references, translations, tgt_lang):
     return metrics
 
 
+@track_emissions
 def main():
-    parser = HfArgumentParser((Arguments, GenerationArguments))
-    args, generation_args = parser.parse_args_into_dataclasses()
+    parser = HfArgumentParser(Arguments)
+    (args,) = parser.parse_args_into_dataclasses()
     model_base_name = os.path.basename(args.model_name_or_path)
 
     print("Arguments", args)
