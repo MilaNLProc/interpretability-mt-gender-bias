@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=ig_europarl
+#SBATCH --job-name=ig_compute
 #SBATCH --gpus=1
 #SBATCH --ntasks=4
-#SBATCH --mem=128000MB
+#SBATCH --mem=64000MB
 #SBATCH --time=24:00:00
 #SBATCH --partition=gpu
 #SBATCH --output=./logs/slurm-%A.out
@@ -37,7 +37,7 @@ PROMPT_TEMPLATE="0"
 
 for model in ${MODELS[@]}; do
     
-    OUTPUT_DIR="${RESULTS_DIR}/integrated_gradients/${DECODING_STRATEGY}/prompt_${PROMPT_TEMPLATE}/${model}"
+    OUTPUT_DIR="${RESULTS_DIR}/integrated_gradients/en_${TGT_LANG}/${DECODING_STRATEGY}/prompt_${PROMPT_TEMPLATE}/${model}"
 
     python src/run.py --do_translation="false" --do_feature_attribution="true" \
         --model_name_or_path=${model} \

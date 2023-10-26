@@ -191,9 +191,11 @@ def main():
         os.makedirs(args.output_dir, exist_ok=True)
 
         for idx, batch in tqdm(enumerate(batches), desc="Batch", total=len(batches)):
-            if os.path.exists(
-                f"{args.output_dir}/{args.src_lang}-{args.tgt_lang}_gen_texts_{idx}-{few_shot_name}.txt"
-            ):
+            output_filename = (
+                f"{args.output_dir}/{args.src_lang}-{args.tgt_lang}_ig_attr_{idx}.gz"
+            )
+
+            if os.path.exists(output_filename):
                 print(
                     f"Skipping batch {idx}... Beware that this works only if batch_size remained unchanged!"
                 )
@@ -214,19 +216,8 @@ def main():
                 show_progress=True,
             )
 
-            # Saving the generations produced in the batch, one per line
-            with open(
-                f"{args.output_dir}/{args.src_lang}-{args.tgt_lang}_gen_texts_{idx}_{few_shot_name}.txt",
-                "w",
-            ) as fp:
-                for g in out.info["generated_texts"]:
-                    fp.write(f"{g}\n")
-
-            with open(
-                f"{args.output_dir}/{args.src_lang}-{args.tgt_lang}_ig_attr_{idx}.pkl",
-                "wb",
-            ) as fp:
-                pickle.dump(out.sequence_attributions, fp)
+            # Saving the output produced in the batch
+            out.save(output_filename, compress=True)
 
 
 if __name__ == "__main__":
