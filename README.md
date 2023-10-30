@@ -26,9 +26,9 @@ These files are publicly available. If you do not know where to find them, shoot
 
 This repository contains the following assets described in the paper:
 
-- human-refined GPT-3.5 translation of WinoMT professions
-- human-translated seed demonstrations for few-shot learning
-- integrated gradient scores (WIP)
+- human-refined GPT-3.5 translation of WinoMT professions: [folder](./translations/professions)
+- human-translated seed demonstrations for few-shot learning: WIP
+- Integrated Gradient attribution scores computed on WinoMT for Flan-T5-XXL and mT0-XXL models in En-Es and En-De: [dataset](https://huggingface.co/datasets/MilaNLProc/a-tale-of-pronouns)
 
 ## Replicating Our Results
 
