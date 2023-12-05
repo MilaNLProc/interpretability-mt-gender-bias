@@ -1,6 +1,6 @@
 # A Tale of Pronouns
 
-Code associated with the paper [A Tale of Pronouns: Interpretability Informs Gender Bias Mitigation for Fairer Instruction-Tuned Machine Translation(https://arxiv.org/abs/2310.12127).
+Code associated with the paper [A Tale of Pronouns: Interpretability Informs Gender Bias Mitigation for Fairer Instruction-Tuned Machine Translation](https://arxiv.org/abs/2310.12127).
 
 ## Getting Started
 
